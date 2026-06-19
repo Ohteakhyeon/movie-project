@@ -1,0 +1,21 @@
+{
+  "name": "movie-project",
+  "private": true,
+  "version": "1.0.0",
+  "description": "영화 예매 시스템 — Web / WAS / DB 3-tier architecture",
+  "scripts": {
+    "install:all": "npm install && npm --prefix web install && npm --prefix was install",
+    "db:up": "docker compose up -d db",
+    "db:down": "docker compose down",
+    "db:reset": "docker compose down -v && docker compose up -d db",
+    "dev": "npm run dev:kill-port && concurrently -n WAS,WEB \"npm run dev:was\" \"npm run dev:web\"",
+    "dev:kill-port": "npx --yes kill-port 3001 5173 5174 5175 5176",
+    "dev:was": "npm --prefix was run dev",
+    "dev:web": "npm --prefix web run dev",
+    "build": "npm --prefix web run build",
+    "lint": "npm --prefix web run lint"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
