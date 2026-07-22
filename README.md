@@ -17,11 +17,11 @@ React 기반 영화 예매 서비스를 Web/WAS/DB 3-Tier 구조로 구성한 �
 - MariaDB 예매 데이터 저장
 
 ## 실행 방법
--npm run install:all
--cp .env.example .env
--cp was/.env.example was/.env
--npm run db:up
--npm run dev
+- npm run install:all
+- cp .env.example .env
+- cp was/.env.example was/.env
+- npm run db:up
+- npm run dev
 
 ## 확인 URL
 - Web: http://localhost:5173
