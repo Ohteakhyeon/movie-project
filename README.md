@@ -52,4 +52,12 @@ React 기반 영화 예매 서비스를 Web/WAS/DB 3-Tier 구조로 구성한 �
 - firewalld 포트 허용
 - Web → WAS → DB 연결 검증
 
+## AWS 3-Tier 배포
 
+- VPC: 10.0.0.0/16
+- Public Subnet: web-subnet
+- Private Subnet: was-subnet, db-subnet
+- Web EC2: Nginx + React Build
+- WAS EC2: Node.js Express + systemd
+- DB EC2: MariaDB
+- Web → WAS → DB 방향으로만 통신 허용
