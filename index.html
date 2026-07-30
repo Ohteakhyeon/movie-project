@@ -142,35 +142,13 @@
 
     /* Hero */
     .hero {
-      min-height: 100vh;
-      min-height: 100dvh;
       display: grid;
-      align-items: end;
-      padding: 6rem 0 4rem;
+      align-items: center;
+      justify-items: center;
+      padding: 7rem 0 3rem;
       position: relative;
       overflow: hidden;
-    }
-
-    .hero-visual {
-      position: absolute;
-      inset: 0;
-      z-index: 0;
-      pointer-events: none;
-    }
-
-    .hero-visual svg {
-      position: absolute;
-      right: -5%;
-      bottom: 8%;
-      width: min(62vw, 720px);
-      height: auto;
-      opacity: 0.9;
-      animation: float-diagram 8s ease-in-out infinite;
-    }
-
-    @keyframes float-diagram {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-12px); }
+      text-align: center;
     }
 
     .hero-content {
@@ -179,6 +157,9 @@
       width: min(100% - 2.5rem, var(--max));
       margin-inline: auto;
       max-width: 640px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       animation: rise-in 0.9s cubic-bezier(0.22, 1, 0.36, 1) both;
     }
 
@@ -216,7 +197,7 @@
       line-height: 1.25;
       color: var(--ink);
       margin-bottom: 1rem;
-      max-width: 18ch;
+      max-width: 22ch;
     }
 
     .hero-lead {
@@ -231,6 +212,37 @@
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
+      justify-content: center;
+    }
+
+    /* Diagram below hero */
+    .diagram-band {
+      padding: 2.5rem 0 1rem;
+      border-top: 1px solid var(--line);
+    }
+
+    .diagram-band .wrap {
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-visual {
+      width: min(62vw, 720px);
+      max-width: 100%;
+      pointer-events: none;
+    }
+
+    .hero-visual svg {
+      width: 100%;
+      height: auto;
+      display: block;
+      opacity: 0.9;
+      animation: float-diagram 8s ease-in-out infinite;
+    }
+
+    @keyframes float-diagram {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-12px); }
     }
 
     .btn {
@@ -639,13 +651,8 @@
     @media (max-width: 800px) {
       .split { grid-template-columns: 1fr; gap: 2rem; }
       .stack-grid { grid-template-columns: 1fr; gap: 1.75rem; }
-      .hero-visual svg {
-        width: min(90vw, 480px);
-        right: -15%;
-        bottom: 2%;
-        opacity: 0.45;
-      }
       .hero-content { max-width: 100%; }
+      .hero-visual { width: min(90vw, 480px); }
     }
 
     @media (max-width: 640px) {
@@ -679,9 +686,11 @@
       section { padding: 3.5rem 0; }
 
       .hero {
-        padding: 5.5rem 0 3rem;
-        align-items: center;
+        padding: 5.5rem 0 2.25rem;
       }
+
+      .diagram-band { padding: 2rem 0 0.5rem; }
+      .hero-visual { width: min(100%, 480px); opacity: 0.9; }
 
       th, td { padding: 0.7rem 0.75rem; font-size: 0.85rem; }
     }
@@ -705,37 +714,6 @@
   </nav>
 
   <header class="hero" id="top">
-    <div class="hero-visual" aria-hidden="true">
-      <svg viewBox="0 0 640 520" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="tierGrad" x1="0" y1="0" x2="1" y2="1">
-            <stop offset="0%" stop-color="#0a7a6a" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#1a2834" stop-opacity="0.75"/>
-          </linearGradient>
-        </defs>
-        <!-- Connection lines -->
-        <path d="M320 88 L320 150" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
-        <path d="M320 230 L320 292" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
-        <path d="M320 372 L320 434" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
-        <!-- User -->
-        <rect x="220" y="28" width="200" height="60" rx="2" fill="#13202c" opacity="0.85"/>
-        <text x="320" y="64" text-anchor="middle" fill="#e8eef2" font-family="IBM Plex Mono, monospace" font-size="14">Browser</text>
-        <!-- Web -->
-        <rect x="140" y="150" width="360" height="80" rx="2" fill="url(#tierGrad)"/>
-        <text x="320" y="185" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">WEB</text>
-        <text x="320" y="208" text-anchor="middle" fill="#c8e8e2" font-family="IBM Plex Mono, monospace" font-size="12">Nginx · React Build</text>
-        <!-- WAS -->
-        <rect x="140" y="292" width="360" height="80" rx="2" fill="#1a2834" opacity="0.92"/>
-        <rect x="140" y="292" width="4" height="80" fill="#12a18c"/>
-        <text x="320" y="327" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">WAS</text>
-        <text x="320" y="350" text-anchor="middle" fill="#9ab0c0" font-family="IBM Plex Mono, monospace" font-size="12">Node.js · Express · systemd</text>
-        <!-- DB -->
-        <rect x="140" y="434" width="360" height="70" rx="2" fill="#13202c" opacity="0.88"/>
-        <rect x="140" y="434" width="4" height="70" fill="#0a7a6a"/>
-        <text x="320" y="465" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">DB</text>
-        <text x="320" y="486" text-anchor="middle" fill="#9ab0c0" font-family="IBM Plex Mono, monospace" font-size="12">MariaDB</text>
-      </svg>
-    </div>
     <div class="hero-content">
       <p class="hero-brand">
         <span>Portfolio</span>
@@ -749,6 +727,37 @@
       </div>
     </div>
   </header>
+
+  <div class="diagram-band" aria-hidden="true">
+    <div class="wrap">
+      <div class="hero-visual">
+        <svg viewBox="0 0 640 520" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="tierGrad" x1="0" y1="0" x2="1" y2="1">
+              <stop offset="0%" stop-color="#0a7a6a" stop-opacity="0.9"/>
+              <stop offset="100%" stop-color="#1a2834" stop-opacity="0.75"/>
+            </linearGradient>
+          </defs>
+          <path d="M320 88 L320 150" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+          <path d="M320 230 L320 292" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+          <path d="M320 372 L320 434" stroke="#0a7a6a" stroke-width="2" stroke-dasharray="4 4" opacity="0.5"/>
+          <rect x="220" y="28" width="200" height="60" rx="2" fill="#13202c" opacity="0.85"/>
+          <text x="320" y="64" text-anchor="middle" fill="#e8eef2" font-family="IBM Plex Mono, monospace" font-size="14">Browser</text>
+          <rect x="140" y="150" width="360" height="80" rx="2" fill="url(#tierGrad)"/>
+          <text x="320" y="185" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">WEB</text>
+          <text x="320" y="208" text-anchor="middle" fill="#c8e8e2" font-family="IBM Plex Mono, monospace" font-size="12">Nginx · React Build</text>
+          <rect x="140" y="292" width="360" height="80" rx="2" fill="#1a2834" opacity="0.92"/>
+          <rect x="140" y="292" width="4" height="80" fill="#12a18c"/>
+          <text x="320" y="327" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">WAS</text>
+          <text x="320" y="350" text-anchor="middle" fill="#9ab0c0" font-family="IBM Plex Mono, monospace" font-size="12">Node.js · Express · systemd</text>
+          <rect x="140" y="434" width="360" height="70" rx="2" fill="#13202c" opacity="0.88"/>
+          <rect x="140" y="434" width="4" height="70" fill="#0a7a6a"/>
+          <text x="320" y="465" text-anchor="middle" fill="#fff" font-family="Bricolage Grotesque, sans-serif" font-size="18" font-weight="700">DB</text>
+          <text x="320" y="486" text-anchor="middle" fill="#9ab0c0" font-family="IBM Plex Mono, monospace" font-size="12">MariaDB</text>
+        </svg>
+      </div>
+    </div>
+  </div>
 
   <main>
     <section id="overview">
@@ -1101,11 +1110,11 @@ DB EC2 — MariaDB</pre>
         <span class="section-label">Expected Result</span>
         <h2 class="section-title">기대 성과</h2>
         <div class="prose result-box">
-          <p>Linux 서버 운영, Nginx Reverse Proxy, Node.js systemd 관리, MariaDB 연동, 방화벽, AWS 네트워크, 장애 대응을 단계적으로 정리했습니다.</p>
           <p>단순한 웹 서비스 구현을 넘어, 실제 서비스 운영에 필요한 인프라 구성과 운영 흐름을 경험하는 것이 목표입니다.</p>
+          <p>Linux 서버 운영, Nginx Reverse Proxy, Node.js systemd 관리, MariaDB 연동, 방화벽, AWS 네트워크, 장애 대응을 단계적으로 정리했습니다.</p>
         </div>
         <div class="links-row">
-          <a href="https://github.com/Ohteakhyeon/movie-project" target="_blank">GitHub Repository: movie-project</a>
+        <a href="https://github.com/Ohteakhyeon/movie-project" target="_blank">GitHub Repository: movie-project</a>
           <span class="dim">GitHub Pages Portfolio: 추후 추가 예정</span>
           <span class="dim">PDF Portfolio: 추후 추가 예정</span>
           <a href="mailto:oth93677971@gmail.com">oth93677971@gmail.com</a>
