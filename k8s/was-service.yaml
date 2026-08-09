@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: movie-was-service
+spec:
+  type: ClusterIP
+  selector:
+    app: movie-was
+  ports:
+    - port: 3001
+      targetPort: 3001

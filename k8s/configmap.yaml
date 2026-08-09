@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: movie-config
+data:
+  PORT: "3001"
+  DB_HOST: "192.168.56.30"
+  DB_PORT: "3306"
+  DB_USER: "movieuser"
+  DB_NAME: "movie_reservation"

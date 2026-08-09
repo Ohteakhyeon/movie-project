@@ -19,15 +19,15 @@ async function request<T>(path: string, options?: RequestInit): Promise<T> {
 }
 
 export function fetchMovies() {
-  return request<Movie[]>('/api/movies')
+  return request<Movie[]>('/movies')
 }
 
 export function fetchSeats(movieId: number) {
-  return request<SeatsResponse>(`/api/movies/${movieId}/seats`)
+  return request<SeatsResponse>(`/movies/${movieId}/seats`)
 }
 
 export function createReservation(payload: CreateReservationPayload) {
-  return request<Reservation>('/api/reservations', {
+  return request<Reservation>('/reservations', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(payload),
@@ -35,5 +35,5 @@ export function createReservation(payload: CreateReservationPayload) {
 }
 
 export function fetchReservations() {
-  return request<Reservation[]>('/api/reservations')
+  return request<Reservation[]>('/reservations')
 }

@@ -48,3 +48,9 @@ server/
 
 # Docker volumes
 db_data/
+
+# Kubernetes
+k8s/secret.yaml
+
+# tar
+*.tar

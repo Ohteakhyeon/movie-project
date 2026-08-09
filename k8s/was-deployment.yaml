@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-was
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-was
+  template:
+    metadata:
+      labels:
+        app: movie-was
+    spec:
+      containers:
+        - name: movie-was
+          image: localhost/movie-was:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 3001
+          envFrom:
+            - configMapRef:
+                name: movie-config
+            - secretRef:
+                name: movie-secret

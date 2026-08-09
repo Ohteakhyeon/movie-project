@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: movie-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: movie-web
+  template:
+    metadata:
+      labels:
+        app: movie-web
+    spec:
+      containers:
+        - name: movie-web
+          image: localhost/movie-web:1.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 80
