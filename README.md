@@ -1,7 +1,13 @@
 # Movie Reservation Infrastructure Project
 
 ## 개요
-React 기반 영화 예매 서비스를 Web/WAS/DB 3-Tier 구조로 구성한 프로젝트입니다.
+
+React 기반 영화 예매 서비스를 Web/WAS/DB 3-Tier 구조로 설계하고,  
+VMware 가상화 환경과 AWS 클라우드 환경에 각각 배포한 인프라 구축 프로젝트입니다.
+
+단순 애플리케이션 기능 구현보다 서버 구성, 네트워크 분리, Nginx Reverse Proxy, WAS systemd 서비스 운영, MariaDB 연동, 보안 그룹 및 방화벽 설정, Shell Script 기반 운영 자동화, Kubernetes 컨테이너 배포까지 확장하는 것을 목표로 했습니다.
+
+최종적으로 로컬 개발 환경에서 시작해 VMware 3-Tier, AWS 3-Tier, Kubernetes 기반 Web/WAS 배포까지 단계적으로 확장하며 Web → WAS → DB 통신 흐름을 검증했습니다.
 
 ## 기술 스택
 - Web: React, TypeScript, Vite
